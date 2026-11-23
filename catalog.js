@@ -1,0 +1,1 @@
+import {json} from '../_auth.js';export async function onRequestGet({env}){try{const r=await env.DB.prepare('SELECT id,nome AS name,preco AS price,categoria AS category,foto AS photo FROM produtos WHERE ativo=1 ORDER BY ordem,id').all();return json(r.results)}catch(e){return json({error:'Erro ao consultar produtos'},500)}}
